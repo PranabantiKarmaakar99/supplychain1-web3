@@ -1,120 +1,101 @@
-
-import React,{useContext,useEffect,useState} from 'react';
+import React, { useContext, useEffect, useState } from "react";
 
 import {
-Table,
-Form,
-Services,
-Profile,
-StartShipment,
-GetShipment,
-CompleteShipment
-
+  Table,
+  Form,
+  Services,
+  Profile,
+  StartShipment,
+  GetShipment,
+  CompleteShipment,
 } from "../components/Index";
 
-import {TrackingContext} from "../context/tracking";
-
-
-
-
+import { TrackingContext } from "../context/tracking5.jsx";
 
 
 const index = () => {
-const {
+  const {
     currentUser,
     createShipment,
-    startShipment,
-    completeShipment,
     getAllShipments,
+    
+    completeShipment,
+    getShipment,
+    startShipment,
+   
     getShipmentsCount,
-    getShipment
-} = useContext(TrackingContext);
+    
+  } = useContext(TrackingContext);
 
-//STATE VARIABLE
+  
 
-const [createShipmentModel,setCreateShipmentModel ] = useState(false);
-const [openProfile,setOpenProfile ] = useState(false);
-const [startModal,setStartModal ] = useState(false);
-const [completeModal,setCompleteModal ] = useState(false);
-const [getModel,setGetModel ] = useState(false);
+  //STATE VARIABLE
 
-//DATA STATE Variable
-const [allShipmentsData,setAllShipmentsData ] = useState("");
+  const [createShipmentModel, setCreateShipmentModel] = useState(false);
+  const [openProfile, setOpenProfile] = useState(false);
+  const [startModel, setStartModel] = useState(false);
+  const [completeModel, setCompleteModel] = useState(false);
+  const [getModel, setGetModel] = useState(false);
 
-useEffect(()=>{
-const getCampaignData = getAllShipments();
+  //DATA STATE Variable
+  const [allShipmentsData, setAllShipmentsData] = useState("");
 
-return async()=>{
-   const allData = await getCampaignData;
-   setAllShipmentsData(allData);
+  useEffect(() => {
+    const getCampaignData = getAllShipments();
 
-}
-
-
-},[]);
-
-
-
+    return async () => {
+      const allData = await getCampaignData;
+      setAllShipmentsData(allData);
+    };
+  }, []);
 
   return (
     <div>
-   <Services
-   setOpenProfile={setOpenProfile}
-   setCompleteModal={setCompleteModal}
-   setGetModel={setGetModel}
-   setStartModal={setStartModal}
-  />
+      <Services
+        setOpenProfile={setOpenProfile}
+        setCompleteModel={setCompleteModel}
+        setGetModel={setGetModel}
+        setStartModel={setStartModel}
+      />
 
-<Table
- 
-   setCreateShipmentModel={setCreateShipmentModel}
-   allShipmentsData={allShipmentsData}
+      {/* <Table
+        setCreateShipmentModel={setCreateShipmentModel}
+        allShipmentsData={allShipmentsData}
+      /> */}
 
-  
-  />
+      {/* <Form
+       
+        createShipment={createShipment}
+        createShipmentModel={createShipmentModel}
+        setCreateShipmentModel={setCreateShipmentModel}
+      /> */}
 
-<Form
- 
- setCreateShipmentModel={setCreateShipmentModel}
- createShipment={ createShipment}
- createShipmentModel={ createShipmentModel}
-/>
+      <Profile
+        openProfile={openProfile}
+        setOpenProfile={setOpenProfile}
+        currentUser={currentUser}
+        getShipmentsCount={getShipmentsCount}
+      />
 
-<Profile
- 
- openProfile={openProfile}
- setOpenProfile ={setOpenProfile}
- currentUser={currentUser}
- getShipmentsCount={getShipmentsCount}
- 
-/>
+      <CompleteShipment
+        completeModel={completeModel}
+        setCompleteModel={setCompleteModel}
+        completeShipment={completeShipment}
+      />
 
-<CompleteShipment
- 
- completeModal={completeModal}
- setCompleteModal ={setCompleteModal}
- completeShipment ={completeShipment}
- 
-/>
+      <GetShipment
+        getModel={getModel}
+        setGetModel={setGetModel}
+        getShipment={getShipment}
+      />
 
-< GetShipment
- 
- getModel={getModel}
- setGetModel ={setGetModel}
- getShipment ={getShipment}
- 
-/>
+      <StartShipment
+        getModel={getModel}
+        setGetModel={setGetModel}
+        getShipment={getShipment}
+      />
+    </div>
+  );
+};
 
-<StartShipment
- 
- getModel={getModel}
- setGetModel ={setGetModel}
- getShipment ={getShipment}
- 
-/>
-
- </div>
-  )
-}
-
-export default index
+export default index;

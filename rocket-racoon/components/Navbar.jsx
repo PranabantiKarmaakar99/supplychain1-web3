@@ -1,11 +1,13 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { TrackingContext } from "../context/tracking";
+import { TrackingContext } from "../context/tracking5.jsx";
 import { Nav1, Nav2, Nav3 } from "./Index";
+import {TbTruckDelivery} from 'react-icons/tb';
+import {IoIosArrowForward} from 'react-icons/io';
 
 
 export default () => {
   const [state, setState] = useState(false);
-  const { currentUser, connectWallet } = useContext(TrackingContext);
+  const {currentUser, connectWallet } = useContext(TrackingContext);
 
   const navigation = [
 
@@ -32,13 +34,12 @@ export default () => {
       <div className='gap-x-14 items-center max-w-screen-xl mx-auto px-4 md:flex md:px-8'>
         <div className='flex items-center  justify-between py-5 md:block'>
           <a href="#">
-            <img  
-              src=""
-              width={120}
-              height={50}
-              alt="Float UI logo "
-            />
+            
+          <TbTruckDelivery size= '60px'   />
+           
+            
           </a>
+         
           <div className='md:hidden'>
             <button
               className='menu-btn text-gray-500 hover:text-gray-800'
@@ -81,7 +82,7 @@ export default () => {
         text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900
         rounded-full md:inline-flex'>
               Connect Wallet
-              <Nav3 />
+              <IoIosArrowForward />
 
 
             </button>

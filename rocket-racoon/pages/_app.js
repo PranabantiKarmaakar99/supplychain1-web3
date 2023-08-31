@@ -1,7 +1,7 @@
 import '@/styles/globals.css';
 
 //Internal Imports
-import {TrackingProvider} from "../context/tracking.js";
+import {TrackingProvider} from "../context/tracking5.jsx";
 import { Navbar,Footer } from '@/components/Index.jsx';
 
 export default function App({ Component, pageProps }) {
